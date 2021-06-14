@@ -90,6 +90,10 @@ public class IDEClockController implements ClockPlugin {
     private TextView mtextUsingNamespace;
     private TextView mtextIntMain;
     private TextView mtextTimeDateDayMonth;
+    private TextView mTextTime;
+    private TextView mTextDate;
+    private TextView mTextDay;
+    private TextView mTextMonth;
 
     /**
      * Create a DefaultClockController instance.
@@ -128,9 +132,13 @@ public class IDEClockController implements ClockPlugin {
 
     private void setViews(View view) {
         mTime = view.findViewById(R.id.clockTime);
+        mTextTime = view.findViewById(R.id.textTime);
         mDate = view.findViewById(R.id.clockDate);
+        mTextDate = view.findViewById(R.id.textDate);
         mDay = view.findViewById(R.id.clockDay);
+        mTextDay = view.findViewById(R.id.textDay);
         mMonth = view.findViewById(R.id.clockMonth);
+        mTextMonth = view.findViewById(R.id.textMonth);
         mtextInclude = view.findViewById(R.id.textInclude);
         mtextStd = view.findViewById(R.id.textStd);
         mtextUsingNamespace = view.findViewById(R.id.textUsingNamespace);
@@ -200,7 +208,7 @@ public class IDEClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        mTime.setTextColor(color);
+        updateColor();
     }
 
     @Override
@@ -212,13 +220,18 @@ public class IDEClockController implements ClockPlugin {
     private void updateColor() {
         final int primary = mPalette.getPrimaryColor();
         final int secondary = mPalette.getSecondaryColor();
+        mTime.setTextColor(primary);
+        mTextTime.setTextColor(secondary);
         mDate.setTextColor(secondary);
+        mTextDate.setTextColor(secondary);
         mtextInclude.setTextColor(secondary);
         mtextUsingNamespace.setTextColor(secondary);
         mtextIntMain.setTextColor(secondary);
         mMonth.setTextColor(primary);
+        mTextMonth.setTextColor(secondary);
         mtextStd.setTextColor(primary);
         mtextTimeDateDayMonth.setTextColor(primary);
+        mTextDay.setTextColor(secondary);
     }
 
     @Override
